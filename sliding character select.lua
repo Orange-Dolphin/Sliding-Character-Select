@@ -691,9 +691,10 @@ function start.f_selectLoading()
 	teammate = {1, 2}
 	for side = 1, 2 do
 		for member, v in ipairs(start.p[side].t_selected) do
-			start.p[side].t_cursor[member].x = 0
-			start.p[side].t_cursor[member].y = 0
-
+			if start.p[side] ~= nil and start.p[side].t_cursor and start.p[side].t_cursor[member] ~= nil then
+				start.p[side].t_cursor[member].x = 0
+				start.p[side].t_cursor[member].y = 0
+			end
 			if not v.loading then
 				selectChar(side, v.ref, v.pal)
 				v.loading = true
